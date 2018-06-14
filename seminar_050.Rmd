@@ -70,6 +70,8 @@ model_r <- lm(data = pulse_fct, Pulse2 ~ Pulse1)
 
 ```{r}
 summary(model_r)
+tidy(model_r)
+glance(model_r)
 ```
 
 - На сколько в среднем отличается пульс после упражнений у двух студентов, если
@@ -125,7 +127,7 @@ coeftest(model_r)
 ```{r}
 ggplot(data = pulse_fct, aes(x = Pulse1, y = Pulse2)) +
   geom_point() +
-  geom_smooth(method = 'lm')
+  geom_smooth(method = 'loess')
 ```
 
 * Упражнение 2.
