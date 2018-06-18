@@ -57,7 +57,7 @@ library(estimatr) # модели с робастными ошибками
 
 Загружаем данные и объявляем переменные факторными:
 ```{r}
-pulse <- import('pulse.txt')
+pulse <- import('data\\pulse.txt')
 pulse_fct <- pulse %>%
   mutate_at(vars(-Weight, -Height, -Age, -Pulse1, -Pulse2), factor)
 ```
