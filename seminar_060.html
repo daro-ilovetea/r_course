@@ -184,15 +184,27 @@ model_ur_rob &lt;- lm_robust(data = pulse_fct, Pulse2 ~ Weight + Pulse1 + Ran + 
 ## Smokes2      -2.7468326   6.5629340</code></pre>
 <p>Сравнение двух робастно оценённых моделей:</p>
 <pre class="r"><code>waldtest(model_r_rob, model_ur_rob)</code></pre>
-<pre><code>## Wald test
-## 
-## Model 1: Pulse2 ~ Pulse1
-## Model 2: Pulse2 ~ Weight + Pulse1 + Ran + Smokes
-##   Res.Df Df  Chisq Pr(&gt;Chisq)    
-## 1    107                         
-## 2    104  3 292.96  &lt; 2.2e-16 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<table class="huxtable" style="border-collapse: collapse; margin-bottom: 2em; margin-top: 2em; width: 45.5555555555556%; margin-left: 0%;">
+<col style="width: NA;"><col style="width: NA;"><col style="width: NA;"><col style="width: NA;"><tr>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0.4pt 0pt 0.4pt 0.4pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; "><span style="font-weight: bold; ">Res.Df</span></td>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0.4pt 0pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; "><span style="font-weight: bold; ">Df</span></td>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0.4pt 0pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; "><span style="font-weight: bold; ">Chisq</span></td>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0.4pt 0.4pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; "><span style="font-weight: bold; ">Pr(&gt;Chisq)</span></td>
+</tr>
+<tr>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0pt 0pt 0pt 0.4pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; background-color: rgb(242, 242, 242); ">107</td>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; background-color: rgb(242, 242, 242); "></td>
+  <td  style="vertical-align: top; text-align: right; white-space: normal; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; background-color: rgb(242, 242, 242); "></td>
+  <td  style="vertical-align: top; text-align: right; white-space: normal; border-width:0pt 0.4pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; background-color: rgb(242, 242, 242); ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0pt 0pt 0.4pt 0.4pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">104</td>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0pt 0pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">3</td>
+  <td  style="vertical-align: top; text-align: right; white-space: normal; border-width:0pt 0pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">293</td>
+  <td  style="vertical-align: top; text-align: right; white-space: normal; border-width:0pt 0.4pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">3.32e-63</td>
+</tr>
+</table>
+
 <p>Второй способ с использование опции и изначальными моделями, оценёнными без поправки на гетероскадастичность.</p>
 <pre class="r"><code>coeftest(model_ur, vcov. = vcovHC)</code></pre>
 <pre><code>## 
@@ -228,15 +240,27 @@ model_ur_rob &lt;- lm_robust(data = pulse_fct, Pulse2 ~ Weight + Pulse1 + Ran + 
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 <p>Сравним две исходных модели с учётом поправки на гетероскедастичность:</p>
 <pre class="r"><code>waldtest(model_r, model_ur, vcov = vcovHC)</code></pre>
-<pre><code>## Wald test
-## 
-## Model 1: Pulse2 ~ Pulse1
-## Model 2: Pulse2 ~ Weight + Pulse1 + Ran + Smokes
-##   Res.Df Df      F    Pr(&gt;F)    
-## 1    107                        
-## 2    104  3 91.751 &lt; 2.2e-16 ***
-## ---
-## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
+<table class="huxtable" style="border-collapse: collapse; margin-bottom: 2em; margin-top: 2em; width: 45.5555555555556%; margin-left: 0%;">
+<col style="width: NA;"><col style="width: NA;"><col style="width: NA;"><col style="width: NA;"><tr>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0.4pt 0pt 0.4pt 0.4pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; "><span style="font-weight: bold; ">Res.Df</span></td>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0.4pt 0pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; "><span style="font-weight: bold; ">Df</span></td>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0.4pt 0pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; "><span style="font-weight: bold; ">F</span></td>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0.4pt 0.4pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; "><span style="font-weight: bold; ">Pr(&gt;F)</span></td>
+</tr>
+<tr>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0pt 0pt 0pt 0.4pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; background-color: rgb(242, 242, 242); ">107</td>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; background-color: rgb(242, 242, 242); "></td>
+  <td  style="vertical-align: top; text-align: right; white-space: normal; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; background-color: rgb(242, 242, 242); ">&nbsp;&nbsp;</td>
+  <td  style="vertical-align: top; text-align: right; white-space: normal; border-width:0pt 0.4pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; background-color: rgb(242, 242, 242); ">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+</tr>
+<tr>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0pt 0pt 0.4pt 0.4pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">104</td>
+  <td  style="vertical-align: top; text-align: right; white-space: nowrap; border-width:0pt 0pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">3</td>
+  <td  style="vertical-align: top; text-align: right; white-space: normal; border-width:0pt 0pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">91.8</td>
+  <td  style="vertical-align: top; text-align: right; white-space: normal; border-width:0pt 0.4pt 0.4pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">4.24e-29</td>
+</tr>
+</table>
+
 <ul>
 <li><p>Какая модель предпочтительнее?</p></li>
 <li><p>Упражнение 8.</p></li>
@@ -438,7 +462,7 @@ cig$tdiff &lt;- (cig$taxs - cig$tax) / cig$cpi
   filter(type != 'factor') %&gt;%
   select(variable, complete, mean, sd, p0, p50, hist) %&gt;%
   hux(add_colnames = TRUE) %&gt;% print_html()</code></pre>
-<table class="huxtable" style="border-collapse: collapse; width: 50%; margin-left: auto; margin-right: auto;">
+<table class="huxtable" style="border-collapse: collapse; margin-bottom: 2em; margin-top: 2em; width: 50%; margin-left: auto; margin-right: auto;">
 <col style="width: NA;">
 <col style="width: NA;">
 <col style="width: NA;">
@@ -447,183 +471,186 @@ cig$tdiff &lt;- (cig$taxs - cig$tax) / cig$cpi
 <col style="width: NA;">
 <col style="width: NA;">
 <tr>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 variable
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 complete
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 mean
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 sd
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-p 0
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+p0
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-p 50
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+p50
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 hist
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 price
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-5.39e+04
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+53940
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-3.93e+03
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+3932.8
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-3.99e+03
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+3989.44
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 326
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-2.4e+03
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+2401
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 <U+2587><U+2583><U+2582><U+2581><U+2581><U+2581><U+2581><U+2581>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 carat
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-5.39e+04
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+53940
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 0.8
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 0.47
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 0.2
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 0.7
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 <U+2587><U+2585><U+2581><U+2581><U+2581><U+2581><U+2581><U+2581>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 depth
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-5.39e+04
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+53940
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-61.8
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+61.75
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 1.43
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 43
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 61.8
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 <U+2581><U+2581><U+2581><U+2583><U+2587><U+2581><U+2581><U+2581>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 table
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-5.39e+04
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+53940
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-57.5
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+57.46
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 2.23
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 43
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 57
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 <U+2581><U+2585><U+2587><U+2581><U+2581><U+2581><U+2581><U+2581>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 x
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-5.39e+04
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+53940
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 5.73
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 1.12
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-<pre><code> 0  &lt;/td&gt;</code></pre>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+0
+</td>
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 5.7
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 <U+2581><U+2581><U+2581><U+2587><U+2587><U+2583><U+2581><U+2581>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 y
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-5.39e+04
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+53940
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 5.73
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 1.14
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-<pre><code> 0  &lt;/td&gt;</code></pre>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+0
+</td>
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 5.71
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 <U+2587><U+2581><U+2581><U+2581><U+2581><U+2581><U+2581><U+2581>
 </td>
 </tr>
 <tr>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 z
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-5.39e+04
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+53940
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 3.54
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 0.71
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
-<pre><code> 0  &lt;/td&gt;</code></pre>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
+0
+</td>
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 3.53
 </td>
-<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; border-top-color: NA;  border-right-color: NA;  border-bottom-color: NA;  border-left-color: NA; padding: 4pt 4pt 4pt 4pt; ">
+<td style="vertical-align: top; text-align: left; white-space: nowrap; border-width:0pt 0pt 0pt 0pt; border-style: solid; padding: 4pt 4pt 4pt 4pt; ">
 <U+2587><U+2583><U+2581><U+2581><U+2581><U+2581><U+2581><U+2581>
 </td>
 </tr>
@@ -1136,7 +1163,7 @@ RMSE
 <pre class="r"><code>ggplot(data = pulse_fct, aes(x = Pulse1, y = Pulse2)) +
   geom_point() +
   geom_smooth(method = 'lm')</code></pre>
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAkAAAAMACAMAAAD7ayjcAAABPlBMVEUAAAAAADoAAGYAOjoAOmYAOpAAZrYzMzMzZv86AAA6OgA6Ojo6OmY6Zjo6ZmY6ZpA6ZrY6kNs9PT1NTU1NTW5NTY5Nbo5NbqtNjshmAABmADpmOgBmOjpmOpBmZjpmZmZmZpBmkGZmkLZmkNtmtttmtv9uTU1ubo5ujqtujshuq+SOTU2Obk2Obm6OyOSOyP+QOgCQOjqQZjqQZmaQZpCQkGaQtraQttuQ29uQ2/+rbk2rjm6ryOSr5P+2ZgC2Zjq2kDq2kGa2kJC2tra2ttu229u22/+2///Ijk3Ijm7IyKvI5P/I///KysrW1tbbkDrbkGbbtmbbtpDbtrbb27bb29vb2//b///kq27kyI7kyKvk///r6+v/tmb/yI7/25D/27b/29v/5Kv/5Mj/5OT//7b//8j//9v//+T///8ZJjxTAAAACXBIWXMAAB2HAAAdhwGP5fFlAAAgAElEQVR4nO3d+YMcxXUH8JE5zOIkBg0gME7iOFgGhAPBiR1LNpg4gbVhVvGJjFYHktFq//9/IDPTV1V1He/V1VXV3/cD2tmZ2tdV70NP9b25RCACYrP0AiDqDgBCBAUAIYICgBBBAUCIoAAgRFAAECIoAAgRFACECAoAQgQFACGCAoAQQQFAiKDIBejcEe5P6Jv5tPFKhUxjKgBCJv9MANRkWQEIgCrJBEBNlhWAAKiSTADUZFkBCIAqyQRATZYVgACokkwA1GRZAQiAKskEQE2WFYAAqJJMANRkWQEIgCrJBEBNlhWAAKiSTADUZFkBCIAqyQRATZYVgACokkwA1GRZAQiAKskEQE2WFYAAqJJMANRkWQEIgCrJBEBNlhWAAKiSTADUZFkBCIAqyQRATZYVgACovEw7QyoAQiZKph0AxUy1vkwAFDXV6jLtAChqqrVl2gFQ3FQry7QDoMipVpYJgGKnWlemHQDFTrWqTDsAip5qVZkAKH6qNWXaAVD8VCvKtAOgBKnWk2kHQClSrScTACVJtZpMOwBKkmotmXYAlCbVSjLtAMjdpr6y5ssEQIQ29ZU1W6YdABHaVFfWbJl2AERpU1tZs2XaARCpTWVlzZcJgGhtKitrtkyqHwCKmar9TDM/ABQzVfuZAIjapqqyZss09wNAMVO1nknjB4Bipmo8k84PAMVM1XgmAGK0qaes2TJp/QBQzFRtZwIgTptqypotk94PAMVM1XImgx8Aipmq5UwAxGtTSVmzZTL5AaCYqdrNZPQDQDFTtZsJgLhtqihrtkxmPwAUM1WrmSx+AChmqkYz2fwAUMxU7kabfeTJpGnjmcnqB4BipnI22mxmgooHZPcDQDFTuRptNnNBpQM6A6BiAG02GkEABEDUTDUC2gEQAAVk2gEQAIVkAqDzggDVN4neAdB5SYBq24zfAdCxmU8b7Ejs90DXBAhRVpxRgvKHsAZaZaZddWug2CMwNPNpU2xZ82UCoKGZT5tiy5ot0w6AhmY+bUota7ZMAxAAaqqs+TIB0NTMp02hZc2WaQQCQC2VNVumCQgANVTWfJkASGzm06bIsmbLJAABoHbKmi2TCASAmilrvkwAJDfzaVNgWbNlkoAAUCtlzZZJBgJAjZQ1WyYFCAC1UdZ8mQBo1synTWllzZZJBQJATZQ1W6YZEABqoazZMs2BAFADZc2XCYB0zXzaFFXWbJk0QACo/rJmy6QDAkDVlzVbJi0QAKq9rPkyAZChmU+bcsqaLZMeCABVXtZsmQxAAKjusubLBEDGZj5tSilrtkwmIADEHOzu9gf7VMN9EOb3Q4iUqW9TBiAjEADiDXZ/A5Z9p/s7sWjuyBIn09CmCEBmIADEGuzhFlCXGyWiZxrbAFBDgFQ2TEHVArIAASAAcmayAQEgAHJmAiB7M/pH1wnICgSAMIl2ZLIDASBsxtszOYAAEHYk2jMBkLOZT5uly5otk8MHANVZ1nyZAMg9cD5t1gLI5QeAqixrtkxOPwBUY1nzZQIgysD5tFkHILcfAKqwrNkyEfwAUH1lzZcJgGgD59NmDYAofgCourJmy0TyA0C1lTVbJpofAKqsrNkyEf0AUF1lzZaJ6geAqiprtkxkPwBUU1nzZQIgzsD5tGkbEN0PAFVU1nyZAIg1cD5tmgbE8ANA9ZQ1WyaOHwCqpqz5MgEQc+B82jQMiOUHgGopa7ZMPD8AVElZ82UCIPbA+bRpFhDTDwDVUdZsmbh+AKiKsubLBEAeA+fTplFAbD8AtERZGZfT5wXE9wNACwDi3NAjKyAPPwCUHxDrlkIABEBKJu5NqfIBclkAIEMznzYNAjoDIACSMvFiB0AAJGdixQ6AKgFU5iR6B0DVACpxM34HQOf1ACpwRyIAdYvFHLa+mU+btg5l7ACoWyzesA3NfNoAEACNzXzaNAVoB0D9YrGGbWzm06YlQAMFAAIgr0wANC4WZ9imZj5tGgI0UgAgAPLINFEAIADyyARAwmLRh01s5tOmGUACBQACIHYmkQIAARA7EwBJi8UYYqGZT5tGAEkUAAiAmJlkCgkAvfCCoVMA1EImhUJ8QC8AUNRUpWVKDeiFQ+hOXAGgJgCpFGIDeuEFkyAAagHQjEJkQIMfzclzAARATkCTn7kgAGoA0JxCVEC9n6sAFDFVSZk0FGICGvwAUMxUBWXSUYgIaPQDQDFTFZQpLaDJz1XtFSgAVDsgLYVogHo/u10HSNcpAKo6k55CLECjn4Mg7RVwAFQ3IAOFOIBeEPzscDA1aqpSMqUEpPgBoJipCslkohADkOoHgGKmKiOTkUIEQDM/ABQzVRGZzBTCAc34AFDUVEVkSghI4weAYqYqIZOFQiggnR8AipmqgEw2CoGAtH4AKGaqAjKlA6T3A0AxUy2fyUohCJDBDwDFTLV4JjuFEEAmP4kBPbnx+vDD9hivfnF49fTW9e327c8BKHImB4UAQEY/iQGdbntAj64LgHpNHSYAipcpGSCzn6SAnp5uB0D3hx86Vtc+v3x8c3vtbsmAjLdanb0x/oJzd1Yhk0doG7koeAOy+EkJ6Kv3tiOg0+274+8fXe/XQ6/8qmBAxps9z94Yf8G6P/SUyWPxtH1yUvAFZPOTENCd7fadv/aAnt4UsNzpf3lHQFUcIOPt5mdvjL/g3aF+zFQ6oPnhr1yAXvvl+M315Ma13+3XRz8+zptPt+8ffyl9rRUGyPjAi9kbm3nwli4WIDcFL0AOP4kn0YORYQ59oDOujR5dHyZB3+7CO038mDS43tAAyr2wxzhLE4Mf4wcoyxYO6P7+6+zu5d9ubfd2AChFLOUnE6Bh2nOYSwuAlA35NGv7dXyFEb6MPL7CHF9f+b7CptfX7mrWQOUBqm0STdHAB0TwkxnQYaVTB6DKNuOTAKL4yQ5ob6aGrbDKdiSSPHABkfzkAfT0pmhm2P9T9H6gqg5l0EAwAQ3T5xIADcfEOkh17ImuKVMKQMP6pwxAj64fNuMfv3c8/LVn9FoFx8LqyUQkwQI0fn+VAehwXON4AP64K/oxjsbHzEQ1wQE0zX8KAXT5+Cfb7Svv9Kucx7f2ft6+q346zVgDEB+QMH/GfaJbB0RWQQckbn8BUOOAyH7ogKTtdwBqGxDdDxmQvP8HgJoGxPBDBaTsPwSgaGV172fODojjhwhI3f8MQLHKSjjSlRsQyw8N0Oz4BQBFKivlWHv9gObHvwAoTllJZ/tkBsTzQwCkO30VgJoFxPTjBqQ9/RmAAIgISH/6PAC1CojrxwXIcPkFADU6iWb7cQAynT4GQG1uxvP92AEZTz8EoIw7EjOe0hoZkPn0VQDKt17IeFK9z0WmFkCW058BKBugnJf1xAVkO30egHIBynlhobOsLEDWyy8AqEFA7rJyANkv3wEgALIDclz+BUDtASKUlQ7I4QeA2ptEU8pKBuTyA0DtbcbHBOT0A0A59w9n2ZFIKisRkNsPALV2TjStrDRABD8A1BggYllJgCh+AKgtQNSyUgCR/ABQU4DIZSUAovkBoOCyMmbGqQHRy+oEZDh9DIB0zXzajI042+b1ACL7AaDAsrL2DiYGxCirAxDdDwCFlZV3fCItIE5Z7YAYfgAIgGaAGHwA6DweoBmj2S+SAmKVVUvB9fBBfSvH+4ZOAVD3rwBotiKar5lSAuKVVUvB9fBBfSvH+4ZOAVD/g+JHd4f6SJnswSyrloLr4YP6Vo73DZ0CoOEnxY/mGRmxMlmDWVYtBdfDB/WtHO8bOgVA44/TBGhBQNyyaim4Hj6ob+V439ApAFJ+sSwgdlm1FM48/AAQAI1tzjz8AFCssi45ieaXVUvBxw8ARSvrcpvxHmXVhZcfAIpX1qV2JPqUVRN+fgCo/vOBfMo6C87hL1YmQ6cAqJhMXmVVw9sPAAHQLsQPANUOyK+scgT4AaDKAXmWVYqej8djvwmZDJ0CoEIyeZZVjGH1A0ArBORbViHGry8AWh8g77JOMU1/AAiAyGUdQ5g+rxKQtLM3JiDHbuUybq7gX9YhxM2vNQKSDzdFBOQ6sFXE7V0CytqHtPm+QkDKAe94gJyH1n1SaQ7PU5bOmCmkrF3Iu3/WB0g95SYaIPfJPR6pdCcIUZbOlCmorMdQdh8C0KoAhZX1EOruZwBaE6DAsu50D68EIACillX78MrVAVrxJDq0rLrTx1YIaLWb8cFl1R1+XyOgte5IDC2r9vSNVQJyjzWhRD5tFj2UEVpW/ek/ALQWQIFlNZ0+BkArARRYVuPphwAEQISymk9fBaB1AAorq+X0ZwBaBaCwstrOngcgAHKV1Xr1BQCtAVBQWe1X7wDQCgAFldVx9RcA5QU07FZm7F4OBhRUVocfAMoLaDiwxTnAtSgglx8Aygpoo0S6TEKjkLI6/QBQTkCqnzx3qg8oq9sPABUJSD5dwGfppkYBZSX4AaASASknLPks3dgooKwUPwBUICDlzaUAkfwAUHmTaPXtIED+ZaX5AaDyNuNjAvIvK9EPAGUEJLpwzKAXB0T1A0D5AFE33CMC8i4r2Q8AZQPk2HI3f9IfkHdZ6X4AKBcg16a7+ZPegHzLajl9TNOmLEAXf/6z8OKPv/mfLwHIF5BvWVl+ygL04M3DsH330/7lN29svvVZo4DST6J9y8rzUxSge/24XfnX5gGl34z3LSvTT0mAHpxsNs/+7Dcf7v95qT1As414tyDfTOcBgJh8igL00Wbz3GHK8/CDzebl9gCdz/0kPBbmWVa2n4IAXezd/Ej6qTFA07zHOaGW3vJZPs+y8v0UBEjg8s2bmyu/aA/QmIq+Reabya+sHn7KBNT/DEC+mfzK6uOnIED7L67DaqeLe4f5ULOAeHeN4mfyKit382ugUAygwyT65fHF7c3m+XYBpT2p3qusnn5KArRf60yroAOnfzhpFlDSy3p8yurrpyRABzOCmI830svGACXM5FNWbz9FAbr4WBLzfycA5JHJp6w9Hx8LJQG6vPz6k38UxHz9MQDxM/HLOq5+6geUIpz1aQsQv6zT11dDgC7+UgMgxkw4IBWrEb+swvSnFUB/+P5h8vPN934YfjJQUkCcbfGAVJxG/LKK0+c2AF30m1/fvLF5NnwGlBAQa29gQKqkgKStrzYA7Tfmn/2Xk299dvHv/dH5QgHxjkcEpGI0YpdV3npvAtC9zeaty2/eOGx+/f6kPzxfDSDp1dxWakDssip7f4oBZBgIEqCPDsczOkCXtzfPVwVIeqlZO5UGSN17WAgg40BQAF180J3IcQT04KTg/UBzQNJr3fdbYkDcss72PhcByDIQFEAdnR5Q/0+ZgGZEJFHaGVJaQNyyzo9eFADIOhCNAVK/pBYGxC2r5ujX0oBcA0EBdPHBYeLcy7kXZTMsXRx8yK+6UF9kiTNeDIe/ygluhw0je5w4d4D2mAqeRM9+s+waiLle0B59X3INRBkIEqAHJ5uXvjwCevimeH5Q+YAWnUQzy6o/e2M5QLSBIAE6nIu4+c7JlX94cSOeoVgDoAU345llNZz9sxQg6kDQAB3PA+oihp+sR+Nnk+oYqQiNmGU1nT22CCDGQBABXX79yXf2Y//MeI18PYCSpHI3YpbVePbhEoBYw0cEFDfci8Xog9DMp00aQMyyms9ezQ+IOXwAlCQTr6yWs59zA2IPHwfQ4eZAAETJxCur7ez5rIB8ho8G6OF/fHm8unmzeTbCVnzzgFhltV99kQ+Q30DQAN0+nkn/0XEzLMKRDAASwnH1TjZAXqNHPx9oz+bByea5Lx++EWND3r1YPp0pBhCnrK6rvzIB8hw98vlAh+Nf9447oaMcC3Mvlk9nSgHEKavLTx5A3qPHOR+oZ1T40Xh+m+iAOGV18ckDyH/0eKdzHA+jApArE6Osbj8ZAFH6ZB4IOqAHJ/0tygDImolRVoKf5IBIfbIMBAVQ9xV2uzsOjzmQPROjrBQ/iQHR+mQbCAqg/ezn+cPm10EOtsIcmehlJflJCYjcJ9tAkAD1N4v+0eXFh5vKzgdyt4kLiF5Wmp90gOh9sg4ECdDxfKDurMTNlQiXhaUEND9how/DG36pZn+s/wW9rEQ/FkBX90HJpA3D6LGDCOjy4U9/8PP9P998L875HO7F8umM9dp40xteqWZ/rP+FnYJYVqofM6CrV42CnIBMo8cPKqDI4V4sn87Yro03vuGTavbHhl/YKQhlJfsxArp61SzIAcg4eh7RGCDtafOHML7hk2r2x4aXpq+UWVnpfkyArl61CLIBsoweeyDOnYAufvrP8/hBuZvxywIyzknUsjL8xAZkGz32QJw7Ae0nzfMoeEfiooDMk1qlrBw/cQHZR489EOcAFBGQeU6rlJXlJyYg1+ixB+K8uTmQca4cFZB2Eu30M5SV5yfiJNo9eh7RGiDT1npcQJrNeLefvqxMP9E240mjx4/mABn2F0YGNM/i9tOVlesn0o5E6uixgwbo6z+LEeFmre7F8umMZQhiA1IbkSicuU8f07RifFbIJIZnn2iNKICUqXTBk2jzWyY/cQARy+rhJxiQd5+IjdYCKO6hDD9APn5CAfn3idiIAujij7/p4z/f3Fz5WaXPjdf7iQKIVlYvP2GAAvpEbUQBJMaDk5Jv8+vTJhwQrapefIIAhfSJ3IgL6PI2TihTMtGK6unHH1BQn+iN2ICirILci+XTmZIB+frxBBTaJ3ojNiCcVK9kIpXU248XoPSPb5gasQEVfZ9onzaBg02qqL8fD0AJrjSxNOICuvgIV2WccwH1flI8gGAWMfrEaUQBJJwV9E8nUW5y514sn84sAYhS08FPDkAx+sRqRAEk70jEZryQieEn0TN05nzKBvRMlCfOuRfLpzP5AXH8pAcUp0/MRhRA8cO9WD6dIQ6BvEs6NaBp/pwYkLh0AJQQkHJQLGSwWX6SAlKWrjRA8Z62uzwg9bB8wGDz/KQEpC5dSYAuPj7cY/yZt6I+YcW9WD6doQzB7MQg/8Fm+kkHaL50BQF6MNyiPsrDdlsCxPWTCpBu6coBdNwAe+bvX4y0+d4QILafJIAMS1cOoNv93Tj+cLKJ8bDdVQFSj1/kexBlOYAuPhjc3N7EeE7Y8oBiTaKpfMSnn0YGZFm6kgD1twM63uO3BUBxNuOdFjSnH8YFZB2HYgDtp0D9sffpp9oBxdiR6Jza6k5fzfckUwAq/FCGc9tIe/pzREAJ+gRA59kAGdcLih+VQixAKfp0DkDnuQAZ1wt2P7EAJenTsZVXIwCKDsh0+mEUQIn6dGzl1QiAuI306wW3nwiAkvWpa+XVCICYjbTrBYqfjE8yLQrQPNZ9Ur0DkOX0+XxPMgWgcgHN1gtkPxmfZFoOoNpusunThtVIXS8w/IQAStqnsZVXIzugVOFeLJ/OpAekrBdYfjI+CheA6gRk9+MLKHWfplZejQCI0UhaL3D9ZHwULgCVCUjEYOJjuXyZDyhDn8RWXo0AiNxIwsD3k/FJpgBk/IThNmMBQ0AebBkD30/GJ5kCkOkTphsdBgwBdbAVDHw/GZ9kCkCGT6ino8YYghiAKHxYgDL1SWnl1agmQLMT4mMMAXGwVQx8P3RAufqktvJqBECkRjMMfD8ZH4ULQKUBmmPg+8n4KFwAKgyQBgPfDwFQzj7FyVQXoKUm0ToMfD8ZH4ULQEVtxmsx8P1kfBQuAJW0I1GPge/HDihvn6Jlqg6Qo5lPG0cjAwa+n4yPwgWgcgCZMPD9ZHwULgAVA8iIge8n46NwAagUQGYMPg+vzPYoXACqABDbT8ZH4QJQIYAsGPh+Mj4KF4DKAGTB4OFnBmiRPkXOBECWVJH9yIAW6lPsTABkTuXkw316U75nKQNQAYCi+xEALdWn+JkAiA/I188IaLk+xc8EQKZU8f30gBbsU4JMAGRI5fLj+yzlJfuUIhMA6VO5/BT+LGUAWhiQ048foGxlBaBlAbn9+ADKWFYAWhQQwQ8fkHenAKg2QBQ/hT+MG4DoIyA/98JrBOTXJD9MQNxOScsXoU/pMlUPSHnyjtcISC9pfliA2J2Sly+8Twkz1Q5IffaX1wgIL8wKlN2HZT+MG4CII6BeaZgOkLr7ueyHcQPQQoDIfqiAfDqlLl9gn9JmAiAxFd0PCZBnp9RWYX1KnAmAhFQMP4U/SxmAlphEc/w4AYV0SmkV0qfkmWoHFHEznuWn8IdxA1D+HYk8P1ZA4Z2SWvn3KUOm+gHJzXzaHBs5+MyfPsj3A0ANA+L6MQOK3ikAqgAQ248JUIJOAVD5gPh+Cn+aOwBlBeTwo31PB8idyWPxAKh4QD4PHyz8ae41Anpy4/X+p6e3rm+3b3+ueVEkINNtn+xX75T9NPcaAZ1uXx8kbQ/x6hezF0UCMt32yXH1l9qItHQAZIynp9sB0On22ueXj29ur91VX5QIyHTbJ4cfBRBx6QDIFF+9tx0APbp+XN08ufHKr5QXJQLaGQC5/EiAyEsHQIa4s92+89ce0J3x33eVF+UB6ihoADn9iIDoSwdAJkCv/fLyfm/ldPv+8d/ja+lFcYB2JkBuPxMgztIBkCV6I09v9t9Wj65fuyu96D727S6808SLM2P0fswfmGLpThQX6wEEP0kiJqBXv5BeSJ92rxh9VqeMlbDwZaR/eqXt+6v/CmMvHb7CWIC0a6BCAIkUdA8fdD990OdGLQDUCiCJgubhg+67R5Vd1ooBVbEVJq9L5g8fdPopvaw1Axp2+fT7gd6VfrkooPHkV+XLaPbwQZcfZybT0gEQAVCxe6LH0+8VDhMg8urHkcm4dABEAPT05va18fCX9GJZQOMFQKqHERDHT+FlrRnQ5WPxAPzjUo7GD36uXjUBYvkpvKxVA7p8fGtP5u27mhfLA7pqBESf/jgyWZYOgKKFe7F8OuMEdNUIiOmn8LICUBpAV42AuH4KLysApZhEX9X6OQJi+ym8rACUYDPe4OcAiOSHnsm4dABUL6C9AL2f3Rnt4YPkTJalUxpJl/WbW0XIRGzl1WgdgHo/2jUQxQ89k23p5EbyjUX4faJnorbyarQGQLvRj0YQwQ89k33ppEbKrY24fWJkIrfyarQCQKKfmSA/P+FlVW+uxuwTIxO9lVej5gF1CEyA3H7omZxLB0D1ARoYGAD5+gGgKVXTgEYHekBOP/RMlKUDoNoACRTi+sEkekrVMCCNH0HQcPqY+W519Ey0pcNmfFWAJAtzQKMfn7vVYUfilKpRQAqGGaDx9FUTIHIm+tLhUEY1gGYcVEDT6c8GQNRMnKUDoEoA6UBo/Rx+1AMiZuItHQDVAUj/lWTwowdEzMRcOgCqApDej3g0Xtp81wCiZuIuHQDVAMjkZwp5988cEDUTe+kAqHxAbj6zh1f63O6w8LICkC8gvp8ZIGImn6UDoMIBUZ4jODt8ceZzv8zCywpAtBGQd+XuKA+inB/+OvO5Xyb2RE+p6gUkH0zaUQBpDp+e+dwvE8fCplTVApIOZ/cY+H5EQJxxY3xW3ykcjV8YkHhCzYiB70cAxBo3zod1ncL5QOUAEjDw/UyAeOPG+rSmUwBUCiDxHDErIMPpYwMg5rjxPj7vFACVAUg+ydAGyHT6YQ+IO27Mz886BUBLAzqf+7EBMp6+2gFijxu3waxTmEQvDeh8frcNMyDz6c9nPrd8xmb8lKpEQKSR1Vzt7nj4oPb0+TPKLZ9nC4QdiWOqAgGR/t/UYuD7IQGaL1DZZV05IMrsQC/F+vBB09NPz5yDpFmgssu6bkCE7RM9BQMgu5/dmXPcdAtUdlkByA7I5EcLyM5nt3MPNgBZU1UHyEhBBtTPsF1+CINtA0SbCA9jTf2k1MqnDQAZAVn4SID6c+idfsIAETfFh7EmflBu5dNm1YBsk2grHxFQfxGP2w/nqIk4bq4l1Y417XNKK5826wZk/P/awUcARPfDOHNEGrfp12RBAJQLkH5m4eQzA0TxQz93TR634bcAVCIg3QgQ/CiASH4OqejfQuMnAWhMVQcgCh8FkMPPlIpuYPokAI2pagBE4yNPool+zi/pCIRPYhI9pqoAENWPuBlP9cNYjYifxBpoTFU8IDIfERDZj1WB/FsA0qYqHBCDzwTIcfhLOvxuUaD8GoC0qcoGxPIzAOL4sShQfw9A2lQlA+LxGQC5/MiAjJPoOQ/hNSbRY6pyAXH59IB4fsyb8Zr1y/QSx8LGVKUC4vPpALn4zB7cZNqRqPuCGl8NPzD8AFBOQIT7bOgBcf2YB9s2w2GteZyZ7K182qwdkPHeu05AbD+WwXb54QoCoEyAdsZ77zoB8f3YBtvlhykIgHIA6iX4AXL64QEyzXAASExVFqBhVeIFyMePz2ADkJiqJEBjob0AefkBoKBMRQESKu0DyM+P12BjEi2kagWQpx+/wcZm/JSqEUBmP8MV9MYRcAyRuLox70gkgAKgggHZ/RwEmUfAPkLihMd8KIOySgKgcgH1fjSthqf0WEbAOkAbTYyDPf6CNCkCoGIBDeufeavBj7m21KscZUGXhjftY00oyLyVTxsAYgEav7+MgCylBaCQTAUCOs5YWICm+Y8JkK20ABSSqTxAXcU5gIT5swGQtbQAFJKpOEDDnIUMSDp9zDCJtlYWk+iQTKUB0jzeneFHe38ghx9sxgdlqh2Qcvqqdr3lqKzfjsRL4U35h4BM+lY+bQCIBkg9/XkAJP0B5wiMPzI0lF1WAKIBmu1+Ppv8jH/BPQLDT5zvo7LLul5ArEn0/PDFmeCnF0QYgf4H1oy47LKuGBBjM15z+OtM9HMURBmB7l/eNnnZZV0zIPKORN3hUwDKnalAQJ0En4dXagCRRqD7F4BWBUh/+oYKiDYC3b8AtCZAhtN/lEk0cQT6HzCJ9mpUJSDT6WPyZjx1BIafsBnvlapCQMbTD6UdieQR8Dk/teyyApAVkPn0VakVeQRmKxysgTipqgNkufxCbEUegdmUB3MgVqraANku3xFakUdgttGFrTBeqqNo6GQAAAzKSURBVMoAWS//mlrRRwCAQjJVB8jqZwLEGAHBS4dG3RGkpVR2WQHIBMjuZwTEGYHZ3kNlV6J+ZVR2WQHIAMjhZwDEGwG7IMPXWdllBSAtIPX0sUiA7IIME6KyywpAOkBuPz0g7gicK2qMZ9IHDjYALQqI4KcDxB6B7l/NxAeAKKkqAUTxcwTEH4HuXwBqGhCFzxGQxwj0P0hSZvMhtRU7DwAtCYjmZw/IZwSGnyQpyspo1oqfCICWA0T0QwCk+TK61L8prYzm40YaXWMmTquiM9UBiOpnd+bqrmZ10mJZAUgCRPazcw2BbkLTYlkBSARE9+MCpN2karGsACQAYvhxDQEARc9UPiCOHyag7odLzeOetPNmedzIIyy0AaD8gFh+eID6n3BKa0im0gEx/BAAze7Ucgic0hqSqXBATD/uIZj7EUL6jENQ2WUFoDPx6adkP4QhkCZAABScqWhAHD9UQGMAUJRMJQPi+wGg7JkKBuThhzUEJj+YRDNTFQrIxw9vCEx+sBnPS1UkINLpY0xAMxQzP9IM2zFuhLGdtQGgtHE2xuDnjBakv9450f1ueEf3CQQvylgDea5/rP8PaSc2mpk08TmEZa8X2l8DaZcl2I9lCAw+vAWVXdZ1A+Lxkc5BZAMiXMBjGDfKh9Q2AJQDUIAfEiD3OgiTaFaqwgAN02cfP0RALkHYjGelKgvQuPkVGZBZkPnKZuu4EcdXagNAyQEN319UQIwhMAky+sGhDFqqkgCN8x8iINYQ0ADhWBg3VUGApvlzTEATBYWG6qV/A4B4qcoBJGx/0QCRhkARM72cfWMBkFeqYgCJ2+8kQKQhmK1zZD/CKa3aTxnHjTfMXRsASgroXNj/QwFEGgKtDfkNkx+sgWipygK0Swdo+o/8hgoGgHipygG0Ex5+6gZEGwK9Ec0b03sAxEtVEKAp3ICIQ2BSAkBxMjUPyC0I14WFZKoWEH0IHF9iuDI1KFOtgDhDcMSg+17qXuHa+JBMlQLiD4FtDeQ1bj5tGsy0GkDzic04B2qwrABkB+Q1BAY/e0Fe4+bTpsFMVQLyHIL5BAiAgjOtAZB+RgxAUTLVCIg5BIZtcgCKkqlCQMwhMO4VxCQ6Rqb6ADGHQLf/R3qrybICUACgAUv3rwBoVCR9wr3P0JiJ3QaAlgfkHIJhdSOoEePc9EgM7rjxmwBQAYCcQ6CCmYX5FEXeuLFbAFABgJy9cfrRrYx8BJVdVgDSA3L3BoAyZ6oKEKE3AJQ5U02AKL0BoMyZWgNku1BZ+cWxga+fwssKQBpAxCGwrGWkX/QtPP0UXlYAmgMiD4HCxfCLsYmfn8LLCkABgOYTG/tMp8WyAtAMEGMIAAiAZoBYQzDjYp0qt1hWAFIAMYdgxsU2VW6xrADkCWhgMuNimSq3WFYAkgFRO+O1Td5iWQFIAkTti99ewRbLCkA+gOwbW5YRYH18aOXTpsFMNQCidgWAFshUASByV9Qdzup7xhEgZxBb+bRpMFP5gOhdmR2yUN8yjQA9hdDKp02DmVoC5H4ehmEEGCmmVj5tGsxUPCBWZwyCcCgjXabSATF7A0C5MzUG6BKAMmcqHBC7NwCUOVPZgDyGAJPovJmKBuTRG+tmmGkE+HlKLysARQaEHYmpMpUMiNYBiYYRkHUEyB8VW/m0aTBTwYBoyy9rAaDcmcoFRFt8hYthEu0YAfpnhVY+bRrMVCwgWmfUFc6lx0llLZYVgIgjoAHEvtCrxbKuHhB1BHSA+CPg0QiZplQA5NEImaZUBQKij8BsEu0zAh6NkGlKVR4gzggom/FeI+DRCJmmVEUDcs+I5R2JpjesI0D51KyVT5sGM5UISBgB9j6d6Udy0xbLumpAwgjw9yqPP9GbtljWNQMSRoB/XGL8u4ymLZYVgACokkzFARJHgKxg/BgA5c7UBKDpcwCUO1NpgOQR4PphPvtdTMWNssu6WkDqCHD9zJ/JTBkBwofmrXzaNJipcEDmvYHTGwZA2JGYJVNZgOgjIGgxAaKPAL9N6WVdKSBpsaxvi1wAaMlMdQKSvYT5abKsAMQBFPgA5hbLCkAsQJodiawR8GiETFOqBgAFDUGLZQUgxiQ6dAhaLCsAMTbjQ4egxbICkPMT+k2usge7xUzVAhpDklT2YLeYqXpA8ndZ2YPdYqbaASmz6bIHu8VMlQNSt+fLHuwWMwFQk2UFIACqJBMANVlWAMIkupJMtQPCZvzCmaoHhB2Jy2aqH5DczKdNg2UFIACqJBMANVlWAAKgSjIBUJNlBSAAqiQTADVZVgACoEoyAVCTZQUgAKokEwA1WVYAAqBKMgFQk2UFIACqJBMANVlWAAKgSjIlAPTkxvYYr35xePX01vXt9u3PAajRTAkAPbouAOo1dZgAqL1MCQDd374+vTjdXvv88vHN7bW7ANRkpgSATrfvjj8/ut6vh175FQA1mSk+oKc3BSx3+rXRHQEVALWUKT6gJzeu/e697fbHx3nz6fb94y+lrzUAaihTfEDDHPpAZ1wbPbo+TIK+3UVwGkSZEQ7o/nb7zt3Lv93a7u0A0OoiHNAw7TnMpQVAyoa8e8XoszotfHXfYqZ0e6Lv7zfdNWsgYmRcR+VL1WImNeIBOqx0AKj5TGrEBLQ3Y9wKcwUAVZJJjWBAT2+KZob9P7P9QK4AoEoyqRG+BjrtVjYdJOOeaFcAUCWZ1IiyH2i/Gf/4vePhrz2j17THwlwBQJVkUiPCHOhOfzD+uCv6seFovCsAqJJMasSYRD/+yXb7yjv9Kufxrb2ft5nrH0S1keuMRESjAUCIoAAgRFAAECIoAAgRFACECAoAQgTFsoBIl5TFiKc3t0Mccsl5Y8aTG8NRZKk3Cbo2ZfrqsB+u/+PpemaIZQGRLimLEQogKW/UOB1OQ5B6k6JrY6bfdn3pjj6m65khlgVEuqQsZjy6fhxn9tkmxHh6uh3+stSb+F2bMt3fvvJvl4c/fjSTqmfGWBYQ6ZKyiLFfEb2r5o0YX723Hcoq9SZ+16ZMw+k0+5Xc4d9EPTPHooBol5RFjDvdOkDKG/Ovb9/569gLoTfRuyZkenKj/7Y60knUM0ssCoh2SVnMfMP/rULeeHHntV+OSy/1JnrXxExDHAEl6pklFgXkuKQsetwZv1+mvJHj/vDFIvQmTdcUQMOXZbKeGWJRQI5LymLHOAcR80aOxQB1/3Mk7JkhFgVEu6QsWtwftoLEvNFzqICka1Uidk0GdL8jk7BnhihiT3TYJWXUGE//l/JGTrLQGuj+9Vfel99MuTNEjCIAhV1Sxsni+k1wLAPojvqVlW41rkYhgEIuKaPG/A8nsJpnK0z5Y7+dTXkSbokosSSgSJeUUWOcF8h548Z9ZZdPvx8oQdfGhX96un2tX92k7JkhFl0DxbmkjBjCPjYpb9y4P+4pSLonWsh0OE4yrm0S9swQS+8HinBJGTHGXbZK3rgxlFXqTZKuTes64a8m7Jkhlp0DRbmkjBjitEDKGzXG9YLUmxRduz8cyhjPMzi8TtczQyw8ic54SZm0ZSvljZtlmHxIvUnQtT7T/a0EKF3PDFHEVhii3gAgRFAAECIoAAgRFACECAoAQgQFACGCAoAQQQFAiKAAIERQABAiKAAIERQAhAgKAEIEBQAhggKAEEEBQK74aDPElb/7uekjz31J/XMPTp6PtWRFBAC5YgK0Dz0UBqCLDzYAtK6QAOml0AHt/QDQymLScfHrvaAfWT/iiIdvbgBobSHquK0vPxHQxScnGwBaXYg6HpxoqdAAHb6+rvwX5kBrC1HHN28cXuz/+3L3+vbmW58JH3n44WEVM22rHV9f+e6n3as9oJe+xCR6daGsgZ6/NAL6/TDTfvaz/t0+Xjq+vPjvT7EVtsJQ5kAvGwEdvt8+7abaz/cfPqx8vv54EHQIAFpdTID+9OH+C+kXRkD9i8PLww/d2qr71KFVFwC0upD3Ax2qbwQ0ObkUPEloAGh1IQF66bAyMgC6d5gw/+/QTJQifAsC0OpiAvRMvz1lmkR/3H3qh3/pPyTEsDICoPXFfCePcTP+D9/vt8J+DkCIIRiA9vGnn764OR7w2H9IJwWAVhc2QB/NAF122/HPHfYY6nZPA9DqQguoQ7DXMAESaBxdfTRulImWAGh1MQc0gri30W7Gd+9Px83uCcfwAWh1oTlSentz2Od8PLguANqvmK68tf/34QcdmNvdbLr7RhuaAtDqQgPocFz9eHbZr6U50IOTYaOrmyKNx8KEPwBAqwvduRoXn+y3tZ55S90Ku/jkO4cdQS/9pf/Yww9flI7OXwIQAiEHACGCAoAQQQFAiKAAIERQABAiKAAIERQAhAgKAEIEBQAhggKAEEEBQIigACBEUAAQIij+H5DxyfSFFnI/AAAAAElFTkSuQmCC" width="288" /></p>
+<p><img src="data:image/png;base64,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" width="288" /></p>
 <p>Для примера процитируем несколько источников, <span class="citation">Афанасьев and Василевский (1992)</span>, <span class="citation">Cobb (2011)</span>, <span class="citation">Гультяев (2008)</span>, <span class="citation">Doe and Pam (2011)</span>.</p>
 <p>Другие стилевые заготовки для оформления цитат можно скачать в архиве <a href="https://www.zotero.org/styles">zotero</a>.</p>
 <p>И библиографию в студию:</p>
